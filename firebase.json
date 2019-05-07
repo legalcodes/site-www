@@ -8,10 +8,9 @@
         "headers": [ { "key": "Access-Control-Allow-Origin", "value": "*" } ]
     }],
     "redirects": [
-      { "source": "/", "destination": "https://dart.dev/", "type": 301 },
       { "source": "/angular", "destination": "http://angulardart.dev/angular", "type": 301 },
       { "source": "/angular/:path*", "destination": "http://angulardart.dev/angular/:path", "type": 301 },
-      { "source": "/:path*", "destination": "https://dart.dev/:path", "type": 301 }
+
     ]
   }
 }
