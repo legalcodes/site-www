@@ -39,13 +39,13 @@ Before running this example, try to spot the issue -- what do you think the
 output will be? 
 
 [//]: https://gist.github.com/5c8c7716b6b4284842f15fe079f61e47
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=5c8c7716b6b4284842f15fe079f61e47"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="420"
   width="100%" >
-</iframe>
+</iframe> -->
 
 Here's why the example fails to print the value that `getUserOrder()` eventually
 produces:
@@ -119,13 +119,13 @@ printing to the console. Because it doesn't return a usable value,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
 [//]: https://gist.github.com/57e6085344cbd1719ed42b32f8ad1bce
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=57e6085344cbd1719ed42b32f8ad1bce"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="300"
   width="100%" >
-</iframe>
+</iframe> -->
 
 In the preceding example, even though `getUserOrder()` executes before 
 the `print()` call on line 8, the console shows the output from line 8 
@@ -137,13 +137,13 @@ Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
 [//]: https://gist.github.com/d843061bbd9388b837c57613dc6d5125
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=d843061bbd9388b837c57613dc6d5125"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
   width="100%" >
-</iframe>
+</iframe> -->
 
 In this example, `getUserOrder()` completes with an error indicating that the 
 user ID is invalid.
@@ -205,6 +205,30 @@ As the following two examples show, the `async` and `await` keywords result in
 asynchronous code that looks a lot like synchronous code. 
 The only differences are highlighted in the asynchronous example, which — if 
 your window is wide enough — is to the right of the synchronous example.
+
+{% prettify dart %}
+// Asynchronous
+[!Future<String>!] createOrderMessage () [!async!] { [[hideme]]HELLO WORLD[[/hideme]] 
+  var order = [!await!] getUserOrder();
+  return 'Your order is: $order';
+}
+
+Future<String> getUserOrder() {
+  // Imagine that this function is
+  // more complex and slow.
+  return
+   Future.delayed(
+     Duration(seconds: 4), () => 'Large Latte');
+}
+
+// Asynchronous
+main() [!async!] {
+  print('Fetching user order...');
+  print([!await!] createOrderMessage());
+}
+
+// "Your order is: Large Latte"
+{% endprettify %}
 
 <div class="container">
   <div class="row">
@@ -299,13 +323,13 @@ Run the following example to see how execution proceeds within an `async`
 function body. What do you think the output will be?
 
 [//]: https://gist.github.com/d7abfdea1ae5596e96c7c0203d975dba
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=d7abfdea1ae5596e96c7c0203d975dba"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 40px"
   frameborder="no"
   height="600"
   width="100%">
-</iframe>
+</iframe> -->
 
 After running the code in the preceding example, try reversing line 4 and line 5:
 
@@ -360,12 +384,12 @@ Implement an `async` function `reportLogins()` so that it does the following:
 * Gets the number of logins by calling the provided function `getLoginAmount()`.
 
 <!-- [//]: https://gist.github.com/f751b692502c4ee43d932f745860b056 -->
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=f751b692502c4ee43d932f745860b056&theme=dark"
   frameborder="no"
   height="550"
   width="100%">
-</iframe>
+</iframe> -->
 
   {{ site.alert.info }}
     If your code passes the tests, you can ignore [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
@@ -389,13 +413,13 @@ the same way you would in synchronous code.
 Run the following example to see how to handle an error from an 
 asynchronous function. What do you think the output will be?
 <!-- [//]: https://gist.github.com/25ade03f0632878a9169209e3cd7bef2 -->
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=25ade03f0632878a9169209e3cd7bef2"
   style="border: 1px solid lightgrey;"
   frameborder="no"
   height="525"
   width="100%" >
-</iframe>
+</iframe> -->
 
 ### Exercise: Practice handling errors
 
@@ -418,12 +442,12 @@ that does the following:
 
 <!-- [//]: https://gist.github.com/858f71f0ad0e70051999bcafa41806a3 -->
 
-<iframe 
+<!-- <iframe 
 src="https://dartpad.dartlang.org/experimental/embed-new-dart.html?id=858f71f0ad0e70051999bcafa41806a3&theme=dark"
 frameborder="no"
 height="525"
 width="100%" >
-</iframe>
+</iframe> -->
 
 <!-- TODO: Consider summary section before final exercise -->
 <!-- TODO: Consider adding new content to final section (not repeating same stuff) -->
@@ -464,12 +488,12 @@ passing it the username, and returning the result.
 Thanks, see you next time" where \<result\> is the String value returned by calling `logoutUser()`.
 
     <!-- [//]: https://gist.github.com/f601d25bc2833c957186e3c6bf71effc -->
-<iframe 
+<!-- <iframe 
   src="https://dartpad.dev/experimental/embed-new-dart.html?id=f601d25bc2833c957186e3c6bf71effc&theme=dark"
   frameborder="no"
   height="550"
   width="100%">
-</iframe>
+</iframe> -->
 
 {{ site.alert.info }}
   You might have noticed that the functions in the exercises don't have return types. That's because Dart can 
@@ -494,4 +518,4 @@ are some suggestions for other topics to explore:
 [usage guide]: /guides/language/effective-dart/usage
 [design guide]: /guides/language/effective-dart/design
 
-<iframe src="https://google.qualtrics.com/jfe/form/SV_5z1y0FziMqwMBZX" height="1025px" width="100%" style="margin-top: 10px;border: 0px;"></iframe>
+<!-- <iframe src="https://google.qualtrics.com/jfe/form/SV_5z1y0FziMqwMBZX" height="1025px" width="100%" style="margin-top: 10px;border: 0px;"></iframe> -->

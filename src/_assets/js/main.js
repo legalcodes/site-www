@@ -8,6 +8,63 @@
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
+var state = {
+  prev_opacity: ''
+};
+
+  $(window).scroll( function(){
+    /* Check the location of each desired element */
+    $('.hideme').each( function(i){
+      var element_top = $(this).offset().top;
+      var center = $(window).scrollTop() + ($(window).height() / 2)
+
+      var isAboveCenter = element_top < center;
+      var opacity = isAboveCenter ? '1' : '0';
+
+      // initialize opacicty state
+      if (state.prev_opacity === '') {
+        state.prev_opactiy = opacity;
+        console.log('Initialized: ', state.prev_opacity);
+      }
+
+      var prev_opacity = state.prev_opacity;
+
+      // check for change
+      didChange = prev_opacity - opacity !== 0;
+
+      if (didChange) {
+        console.log('CHANGED!!!!');
+        $(this).animate({'opacity': opacity},1500);
+      }
+
+      // setState
+      state.prev_opacity = opacity;
+
+
+      // // compare prev to next
+      // if 
+
+      // if (element_top < center) {
+      //   console.log('OPACITY 1');
+      //   // $(this).animate({'opactiy': '1'},2000);
+      //   $(this).animate({'opacity':'1'},1500);
+      // } else {
+      //   console.log('OPACITY 0');
+      //   // $(this).animate({'opacity':'1'},1500);
+      // }
+
+
+        // var bottom_of_object = $(this).position().top + $(this).outerHeight();
+        // console.log($(this).offset());
+        
+        /* If the object is completely visible in the window, fade it it */
+        // if( bottom_of_window > bottom_of_object ){
+        //     $(this).animate({'opacity':'1'},1500);
+        // }
+    }); 
+  });
+
+
 function fixNav() {
   var t = $(document).scrollTop(),
     f = $("#page-footer").offset().top,

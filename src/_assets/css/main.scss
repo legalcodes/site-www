@@ -204,6 +204,10 @@ pre, pre.prettyprint {
     padding: 2px;
   }
 
+  .hideme {
+    opacity: 0;
+  }
+
   a {
     font-family: inherit;
     font-weight: inherit;
