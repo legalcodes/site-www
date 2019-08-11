@@ -208,8 +208,8 @@ your window is wide enough — is to the right of the synchronous example.
 
 {% prettify dart %}
 // Asynchronous
-[!Future<String>!] createOrderMessage () [!async!] { [[hideme]]HELLO WORLD[[/hideme]] 
-  var order = [!await!] getUserOrder();
+[[hideme]][!Future<String>!][[/hideme]] createOrderMessage () [[hideme]][!async!][[/hideme]] { [[hideme]]HELLO WORLD[[/hideme]] 
+  var order = [[hideme]][!await!][[/hideme]] getUserOrder();
   return 'Your order is: $order';
 }
 
@@ -222,9 +222,9 @@ Future<String> getUserOrder() {
 }
 
 // Asynchronous
-main() [!async!] {
+main()[[hideme]][!async!][[/hideme]] {
   print('Fetching user order...');
-  print([!await!] createOrderMessage());
+  print([[hideme]][!await!][[/hideme]] createOrderMessage());
 }
 
 // "Your order is: Large Latte"

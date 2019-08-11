@@ -8,37 +8,40 @@
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
-var state = {
-  prev_opacity: ''
-};
+var state = {};
 
   $(window).scroll( function(){
-    /* Check the location of each desired element */
+    /* Check location of each desired element */
     $('.hideme').each( function(i){
       var element_top = $(this).offset().top;
       var center = $(window).scrollTop() + ($(window).height() / 2)
-
       var isAboveCenter = element_top < center;
       var opacity = isAboveCenter ? '1' : '0';
 
-      // initialize opacicty state
-      if (state.prev_opacity === '') {
-        state.prev_opactiy = opacity;
-        console.log('Initialized: ', state.prev_opacity);
+      if (!state[`element_${i}`]) {
+        state[`element_${i}`] = { prev_opacity: opacity };
       }
 
-      var prev_opacity = state.prev_opacity;
+      // initialize this element in state object
+      var elemState = state[`element_${i}`];
+
+      // initialize prev_opacity
+      if (elemState.prev_opacity === '') {
+        elemState.prev_opacity = opacity;
+        console.log('Initialized: ', elemState.prev_opacity);
+      }
+
 
       // check for change
-      didChange = prev_opacity - opacity !== 0;
+      didChange = elemState.prev_opacity - opacity !== 0;
 
       if (didChange) {
         console.log('CHANGED!!!!');
-        $(this).animate({'opacity': opacity},1500);
+        $(this).animate({'opacity': opacity},500);
       }
 
       // setState
-      state.prev_opacity = opacity;
+      elemState.prev_opacity = opacity;
 
 
       // // compare prev to next
