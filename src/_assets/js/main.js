@@ -14,9 +14,10 @@ var state = {};
     /* Check location of each desired element */
     $('.hideme').each( function(i){
       var element_top = $(this).offset().top;
-      var center = $(window).scrollTop() + ($(window).height() / 2)
-      var isAboveCenter = element_top < center;
-      var opacity = isAboveCenter ? '1' : '0';
+      var oneThird = ($(window).height() / 3);
+      var bottomThird = $(window).scrollTop() + ($(window).height() - oneThird);
+      var isAboveTarget = element_top < bottomThird;
+      var opacity = isAboveTarget ? '1' : '0';
 
       if (!state[`element_${i}`]) {
         state[`element_${i}`] = { prev_opacity: opacity };
@@ -31,39 +32,16 @@ var state = {};
         console.log('Initialized: ', elemState.prev_opacity);
       }
 
-
       // check for change
       didChange = elemState.prev_opacity - opacity !== 0;
 
       if (didChange) {
         console.log('CHANGED!!!!');
-        $(this).animate({'opacity': opacity},500);
+        $(this).animate({'opacity': opacity},1000);
       }
 
       // setState
       elemState.prev_opacity = opacity;
-
-
-      // // compare prev to next
-      // if 
-
-      // if (element_top < center) {
-      //   console.log('OPACITY 1');
-      //   // $(this).animate({'opactiy': '1'},2000);
-      //   $(this).animate({'opacity':'1'},1500);
-      // } else {
-      //   console.log('OPACITY 0');
-      //   // $(this).animate({'opacity':'1'},1500);
-      // }
-
-
-        // var bottom_of_object = $(this).position().top + $(this).outerHeight();
-        // console.log($(this).offset());
-        
-        /* If the object is completely visible in the window, fade it it */
-        // if( bottom_of_window > bottom_of_object ){
-        //     $(this).animate({'opacity':'1'},1500);
-        // }
     }); 
   });
 
