@@ -200,12 +200,14 @@ for a future to complete:
     print(await createOrderMessage());
 {% endprettify %}
 
-
 As the following two examples show, the `async` and `await` keywords result in 
 asynchronous code that looks a lot like synchronous code. 
 The only differences are highlighted in the asynchronous example, which — if 
 your window is wide enough — is to the right of the synchronous example.
 
+/* TODO: "consider making this simple but beautiful"
+
+*/
 {% prettify dart %}
 // Asynchronous
 [[hideme]][!Future<String>!][[/hideme]] createOrderMessage () [[hideme]][!async!][[/hideme]] { [[hideme]]HELLO WORLD[[/hideme]] 
