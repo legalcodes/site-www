@@ -205,12 +205,10 @@ asynchronous code that looks a lot like synchronous code.
 The only differences are highlighted in the asynchronous example, which — if 
 your window is wide enough — is to the right of the synchronous example.
 
-/* TODO: "consider making this simple but beautiful"
-
-*/
 {% prettify dart %}
 // Asynchronous
-[[hideme]][!Future<String>!][[/hideme]] createOrderMessage () [[hideme]][!async!][[/hideme]] { [[hideme]]HELLO WORLD[[/hideme]] 
+[[showme]] String createOrderMessage() {} [[/showme]]
+[[hideme]][!Future<String>!] createOrderMessage() [!async!] { [[/hideme]]
   var order = [[hideme]][!await!][[/hideme]] getUserOrder();
   return 'Your order is: $order';
 }

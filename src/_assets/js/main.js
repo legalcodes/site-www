@@ -8,42 +8,50 @@
 //= require vendor/code-prettify/lang-dart
 //= require vendor/code-prettify/lang-yaml
 
-var state = {};
 
-  $(window).scroll( function(){
+// stack old/new text on top of each other
+
+// set opacity of old text to 0
+
+// setup opacity state for both 
+
+// add button, onClick, toggle opacity state
+
+
+var layeredElementState = {};
+
     /* Check location of each desired element */
-    $('.hideme').each( function(i){
-      var element_top = $(this).offset().top;
-      var oneThird = ($(window).height() / 3);
-      var bottomThird = $(window).scrollTop() + ($(window).height() - oneThird);
-      var isAboveTarget = element_top < bottomThird;
-      var opacity = isAboveTarget ? '1' : '0';
+    // $('.hideme').each( function(i){
+    //   var element_top = $(this).offset().top;
+    //   var oneThird = ($(window).height() / 3);
+    //   var bottomThird = $(window).scrollTop() + ($(window).height() - oneThird);
+    //   var isAboveTarget = element_top < bottomThird;
+    //   var opacity = isAboveTarget ? '1' : '0';
 
-      if (!state[`element_${i}`]) {
-        state[`element_${i}`] = { prev_opacity: opacity };
-      }
+    //   if (!state[`element_${i}`]) {
+    //     state[`element_${i}`] = { prev_opacity: opacity };
+    //   }
 
-      // initialize this element in state object
-      var elemState = state[`element_${i}`];
+    //   // initialize this element in state object
+    //   var elemState = state[`element_${i}`];
 
-      // initialize prev_opacity
-      if (elemState.prev_opacity === '') {
-        elemState.prev_opacity = opacity;
-        console.log('Initialized: ', elemState.prev_opacity);
-      }
+    //   // initialize prev_opacity
+    //   if (elemState.prev_opacity === '') {
+    //     elemState.prev_opacity = opacity;
+    //     console.log('Initialized: ', elemState.prev_opacity);
+    //   }
 
-      // check for change
-      didChange = elemState.prev_opacity - opacity !== 0;
+    //   // check for change
+    //   didChange = elemState.prev_opacity - opacity !== 0;
 
-      if (didChange) {
-        console.log('CHANGED!!!!');
-        $(this).animate({'opacity': opacity},1000);
-      }
+    //   if (didChange) {
+    //     console.log('CHANGED!!!!');
+    //     $(this).animate({'opacity': opacity},1000);
+    //   }
 
-      // setState
-      elemState.prev_opacity = opacity;
-    }); 
-  });
+    //   // setState
+    //   elemState.prev_opacity = opacity;
+    // }); 
 
 
 function fixNav() {
